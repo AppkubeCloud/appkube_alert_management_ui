@@ -1,0 +1,41 @@
+.dashboard-label{
+    color: #383874;
+    margin: 30px;
+    padding-top: 30px;
+    width: 100%;
+    height: auto;
+   
+}
+
+.label-div{
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.dashboard-div{
+    /* margin:0px; */
+    background-color: #F6F7FB;
+}
+
+.label-btn{
+    float: right;
+    background-color: #384CFF;
+    color: white;
+}
+
+.manage-workflow-btn{
+    float: right;
+    margin-left: 20px;
+    background-color: #DDE1F8;
+    color: #383874;
+}
+.alert-card{
+    margin-left: 30px;
+    margin-bottom: 15px;
+    /* height: 60px; */
+    
+}
+.card-label{
+    float: right;
+    margin-top: -10px;
+}
