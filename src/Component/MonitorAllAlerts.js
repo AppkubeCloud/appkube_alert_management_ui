@@ -1,5 +1,5 @@
 import react, {useState} from "react";
-import { Table, Tag, Checkbox, Input, Button, Dropdown,Badge, Space, Select, Modal, DatePicker, Menu } from 'antd';
+import { Table, Tag, Checkbox, Input, Button, Dropdown,Badge, Space, Select, Modal, DatePicker, Menu, Breadcrumb } from 'antd';
 import{ InfoCircleOutlined, UnorderedListOutlined, MoreOutlined, DownOutlined, DownCircleFilled, DeleteOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom";
 import Monitorallalertdata from "./Data/Monitorallalertdata.json";
@@ -184,7 +184,9 @@ function MonitorAllAlerts (){
       render: (_, record) => (
           <span style={{ display: 'inline-flex', alignItems: 'center' }}>
           <Checkbox style={{ marginRight: 8 }} />
-          {record.name}
+          {/* {record.name} */}
+          <Link to={record.address}> {record.name}</Link> 
+    
           {/* <Link to="monitorallalerts/percentagecpualert" rel="noopener noreferrer">{record.name}</Link> */}
         </span>
       
@@ -324,8 +326,16 @@ function MonitorAllAlerts (){
          <div className="main-div">
         
           <div>
+          <Breadcrumb className="monitoralert-breadcrumb">
+    <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
+    {/* <Breadcrumb.Item>
+      <a href="">Issue Tracker</a>
+    </Breadcrumb.Item> */}
+    
+    <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Alerts</Breadcrumb.Item>
+  </Breadcrumb>
             <h4 className="alert-title">MONITOR | ALL ALERTS</h4>
-            <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Alerts</label>
+            {/* <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Alerts</label> */}
             <div >
               <div className="resource-div">
                 {/* <Popover
@@ -335,8 +345,9 @@ function MonitorAllAlerts (){
                 > */}
                 <Button className="monitor-data-filter"  onClick={showModal}>Filter</Button>
                 <Button icon={<DeleteOutlined />} className="monitor-data-filter" disabled >Clear Filter</Button>
-                <div style={{ marginTop: '20px' }}>
-        <div>
+            {/* <div >     */}
+              <div style={{ marginTop: '20px' }} className="monitor-allalt-filter-data">
+        <div className="monitor-allalt-filter-data">
           {/* Infra: */}
           {selectedValues1.map((value, index) => (
             <Tag key={index} closable onClose={() => handleTagClose1(value)}>
@@ -345,14 +356,14 @@ function MonitorAllAlerts (){
           ))}
         </div>
         {/* handleProductTagClose */}
-        <div>
+        <div className="monitor-allalt-filter-data">
         {selectProductValue.map((value, index) => (
             <Tag key={index} closable onClose={() => handleProductTagClose(value)}>
               {value}
             </Tag>
           ))}
         </div>
-        <div>
+        <div className="monitor-allalt-filter-data">
           {/* Infra: */}
           {selectElementValue.map((value, index) => (
             <Tag key={index} closable onClose={() => handleelementTagClose(value)}>
@@ -360,8 +371,8 @@ function MonitorAllAlerts (){
             </Tag>
           ))}
         </div>
-
-        <div>
+        {/* </div> */}
+        <div className="monitor-allalt-filter-data">
          {/* Business: */}
           {selectedValues2.map((value, index) => (
             <Tag key={index} closable onClose={() => handleTagClose2(value)}>
@@ -370,7 +381,7 @@ function MonitorAllAlerts (){
           ))}
         </div>
 
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Business: */}
           {selectBusinessProduct.map((value, index) => (
             <Tag key={index} closable onClose={() => handleBusinessTagClose(value)}>
@@ -379,7 +390,7 @@ function MonitorAllAlerts (){
           ))}
         </div>
 
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Business: */}
           {selectEnvironment.map((value, index) => (
             <Tag key={index} closable onClose={() => handleEnvironmentTagClose(value)}>
@@ -389,7 +400,7 @@ function MonitorAllAlerts (){
         </div>
         {/* handleModuleTagClose */}
 
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Business: */}
           {selectModuleValue.map((value, index) => (
             <Tag key={index} closable onClose={() => handleModuleTagClose(value)}>
@@ -399,7 +410,7 @@ function MonitorAllAlerts (){
         </div>
         {/* handleServicesTagClose */}
 
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Business: */}
           {selectServices.map((value, index) => (
             <Tag key={index} closable onClose={() => handleServicesTagClose(value)}>
@@ -407,7 +418,9 @@ function MonitorAllAlerts (){
             </Tag>
           ))}
         </div>
-        <div>
+        </div>
+        <div className="monitor-allalt-filter-data">
+        <div className="monitor-allalt-filter-data">
          {/* Filters: */}
           {selectedValues3.map((value, index) => (
             <Tag key={index} closable onClose={() => handleTagClose3(value)}>
@@ -416,7 +429,7 @@ function MonitorAllAlerts (){
           ))}
         </div>
         {/* handleAlertStateTagClose */}
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Filters: */}
           {selectAlertState.map((value, index) => (
             <Tag key={index} closable onClose={() => handleAlertStateTagClose(value)}>
@@ -425,7 +438,7 @@ function MonitorAllAlerts (){
           ))}
         </div>
         {/* handleAlertTypeTagClose */}
-        <div>
+        <div className="monitor-allalt-filter-data">
          {/* Filters: */}
           {selectAlertType.map((value, index) => (
             <Tag key={index} closable onClose={() => handleAlertTypeTagClose(value)}>

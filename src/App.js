@@ -13,16 +13,17 @@ function App() {
   return (
     <div className='App'>
       <header >
-        <PercentageCPUAlert/>
+        {/* <AlertManagementDashboard/> */}
         
       </header>
       <Routes>
-
-              <Route exact path="/"  element={<MonitorAllAlerts/>}  ></Route>
-              <Route exact path="monitorallalerts/percentagecpualert"  element={<PercentageCPUAlert/>}  ></Route>
-              <Route exact path="/summary"  element={<Summary />}  ></Route>
-              <Route path="monitorallalerts/percentagecpualert/history" element={<History/>}></Route>
-              <Route path="monitorallalerts/percentagecpualert/diagnostics" element={<Diagnostics/>}></Route>
+              <Route path='/' element={<AlertManagementDashboard/>}/>
+              <Route exact path="/monitorallalerts"  element={<MonitorAllAlerts/>}  ></Route>
+              <Route  path="alertsmanagement"  element={<AlertsManagement/>}></Route>
+              <Route  path="/percentagecpualert"   element={<PercentageCPUAlert/>}  ></Route>
+              <Route  path="/percentagecpualert/summary"  element={<Summary />}  ></Route>
+              <Route path="/percentagecpualert/history" element={<History/>}></Route>
+              <Route path="/percentagecpualert/diagnostics" element={<Diagnostics/>}></Route>
               
             </Routes>
     </div>

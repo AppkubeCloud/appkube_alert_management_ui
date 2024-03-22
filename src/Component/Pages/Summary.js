@@ -1,5 +1,6 @@
 import React from "react";
 import {Row, Col, Input, Card, Divider} from "antd";
+import PercentageCPUAlert from "../PercentageCPUAlerts";
 import { Line, Chart } from "@ant-design/charts";
 // import { Chart } from 'bizcharts';
 // import { Chart, LineAdvance } from "@ant-design/charts";
@@ -47,6 +48,7 @@ const config = {
 function Summary(){
     return(
        <div >
+        <PercentageCPUAlert/>
             <Row className="severity-card" >
             <Col span={4} order={1} >
                 <label className="serverity-label">Serverity</label>

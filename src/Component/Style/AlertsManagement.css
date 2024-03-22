@@ -91,3 +91,39 @@
 .action-dropdown:hover{
     color: "#383874";
 }
+
+.monitoralert-breadcrumb{
+    float: right;
+/* Headline/H5 */
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+margin-top: 20px;
+margin-right: 20px;
+/* font-weight: 500; */
+/* line-height: 36px;  */
+}
+:where(.css-dev-only-do-not-override-djtmh8).ant-breadcrumb li:last-child{
+    color: #384CFF;
+}
+
+:where(.css-dev-only-do-not-override-djtmh8).ant-breadcrumb a:hover{
+    background-color: transparent;
+    color:#383874
+}
+
+:where(.css-dev-only-do-not-override-djtmh8).ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover{
+    color: #383874;
+}
+
+.monitor-allalt-filter-data{
+   /* display: inline; */
+   display: flex;
+   margin-bottom: 3px;
+    /* overflow: hidden; */
+    /* white-space: nowrap; */
+ 
+
+   
+
+}

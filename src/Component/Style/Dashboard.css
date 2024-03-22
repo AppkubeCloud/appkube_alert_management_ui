@@ -1,10 +1,10 @@
 .dashboard-label{
     color: #383874;
     margin: 30px;
-    padding-top: 30px;
-    width: 100%;
-    height: auto;
-   
+   font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .label-div{
@@ -26,16 +26,67 @@
 .manage-workflow-btn{
     float: right;
     margin-left: 20px;
+    margin-right: 40px;
     background-color: #DDE1F8;
     color: #383874;
 }
-.alert-card{
+.dashboard-alert-card{
     margin-left: 30px;
     margin-bottom: 15px;
+    /* width: 290px;
+    height: 96px; */
     /* height: 60px; */
     
 }
 .card-label{
     float: right;
     margin-top: -10px;
+    color: var(--Night-Blue, #383874);
+/* Body / Title */
+font-family: Roboto;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+
+}
+
+.dash-avr-tm-crd{
+    /* width: 694px; */
+height: 298px;
+margin-left: 25px;
+margin-bottom: 18px;
+}
+
+.dash-avr-tm-lbl{
+    color: #383874;
+font-family: "Open Sans";
+font-size: 16px;
+/* font-style: normal; */
+font-weight: 700;
+
+}
+
+.dash-avr-tm-lbl p{
+    font-family: Roboto;
+    font-size: 12px;
+    margin-top: 0px;
+    opacity: 0.6;
+}
+.dash-team{
+   padding-left:32px;
+    color: #383874;
+}
+
+.team-crd{
+    margin-top: 40px;
+    color: #383874;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+}
+.team-crd-lbl{
+    color: #383874;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
 }

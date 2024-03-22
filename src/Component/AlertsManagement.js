@@ -1,5 +1,6 @@
  import react, {useState} from "react";
-import { Table, Checkbox, Input, Button, Select, Menu, Dropdown } from 'antd';
+import { Table, Checkbox, Input, Button, Select, Menu, Dropdown, Breadcrumb } from 'antd';
+import { Link } from "react-router-dom";
 import{ InfoCircleOutlined, UnorderedListOutlined, MoreOutlined, PlusOutlined, DownCircleFilled} from "@ant-design/icons"
 import AlertsData from "./Data/AlertsData.json";
 import "./Style/AlertsManagement.css";
@@ -90,8 +91,17 @@ function AlertsManagement (){
     return(
          <div className="main-div">
           <div>
+          <Breadcrumb className="monitoralert-breadcrumb">
+    <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
+    {/* <Breadcrumb.Item>
+      <a href="">Issue Tracker</a>
+    </Breadcrumb.Item> */}
+    
+    <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Overview</Breadcrumb.Item>
+  </Breadcrumb>
             <h4 className="alert-title">MONITOR | ALERTS</h4>
-            <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Overview</label>
+     
+            {/* <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Overview</label> */}
             <div >
               <div className="resource-div">
                 {/* <label className="resource-label">Resource Group <InfoCircleOutlined /></label> */}

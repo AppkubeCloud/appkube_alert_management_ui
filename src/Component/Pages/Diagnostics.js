@@ -1,10 +1,15 @@
 import React from "react";
 import { Row, Col, Divider} from "antd";
+import PercentageCPUAlert from "../PercentageCPUAlerts";
 import "../Style/History.css"
 
 function Diagnostics(){
     return(
+        <div>
+             <PercentageCPUAlert defaultActiveKey="3"/>
+       
         <div className="history-div">
+           
             <label>Percentage CPU</label>
             <Row className="history-card" >
             <Col span={4} order={1} style={{marginBottom:"0px"}} >
@@ -52,6 +57,7 @@ function Diagnostics(){
             </Col>
             </Row>
             <Divider dashed/>
+        </div>
         </div>
     )
 };
