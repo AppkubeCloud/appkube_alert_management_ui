@@ -1,14 +1,14 @@
  [
-    { "Month": "Jan", "value": "85% "},
-    { "Month": "Feb", "value": "95%" },
-    { "Month": "Mar", "value": "75%" },
-    { "Month": "Apr", "value": "70%" },
-    { "Month": "May", "value": "80%" },
-    { "Month": "Jun", "value": "75%" },
-    { "Month": "Jul", "value": "85% " },
-    { "Month": "Aug", "value": "70%" },
-    { "Month": "Sep", "value": "90%" },
-    { "Month": "Oct", "value": "85%" },
-    { "Month": "Nov", "value": "90%" },
-    { "Month": "Dec", "value": "82%" }
+    { "Month": "Jan", "value": 85},
+    { "Month": "Feb", "value": 95 },
+    { "Month": "Mar", "value": 75 },
+    { "Month": "Apr", "value": 70 },
+    { "Month": "May", "value": 80 },
+    { "Month": "Jun", "value": 75 },
+    { "Month": "Jul", "value": 85 },
+    { "Month": "Aug", "value": 70 },
+    { "Month": "Sep", "value": 90 },
+    { "Month": "Oct", "value": 85 },
+    { "Month": "Nov", "value": 90 },
+    { "Month": "Dec", "value": 82 }
   ]

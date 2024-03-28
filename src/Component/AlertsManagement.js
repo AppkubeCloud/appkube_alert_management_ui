@@ -1,11 +1,33 @@
  import react, {useState} from "react";
 import { Table, Checkbox, Input, Button, Select, Menu, Dropdown, Breadcrumb } from 'antd';
 import { Link } from "react-router-dom";
-import{ InfoCircleOutlined, UnorderedListOutlined, MoreOutlined, PlusOutlined, DownCircleFilled} from "@ant-design/icons"
+import{ InfoCircleOutlined, CodepenCircleOutlined, MoreOutlined, PlusOutlined, DownCircleFilled} from "@ant-design/icons"
 import AlertsData from "./Data/AlertsData.json";
 import "./Style/AlertsManagement.css";
 function AlertsManagement (){
   const [searchvalue, setSearchvalue] = useState("");
+  const items=[
+    {
+      label:"Delete",
+      key:"1",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Archive",
+      key:"2",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Processed",
+      key:"3",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Disable Rule",
+      key:"4",
+      icon:<CodepenCircleOutlined/>
+    }
+  ]
   const {Search} = Input;
   const columns = [
     {
@@ -56,21 +78,12 @@ function AlertsManagement (){
         dataIndex: 'action',
         render: (_, record) => (
           <>
-            {/* {record.action === 'MoreOutlined' && <MoreOutlined style={{ marginRight: 8 }} />} */}
-            
+                    
             <Dropdown
-        overlay={
-          <Menu className="action-dropdown">
-            <Menu.Item key="1" icon={<DownCircleFilled/>}>Delete</Menu.Item>
-            <Menu.Item key="2" icon={<DownCircleFilled/>}>Archive </Menu.Item>
-            <Menu.Item key="3" icon={<DownCircleFilled/>}>Processed</Menu.Item>
-            <Menu.Item key="4" icon={<DownCircleFilled/>}>Disable Rule</Menu.Item>
-          </Menu>
-        }
-      >
-      
-         {record.action === 'MoreOutlined' && <MoreOutlined style={{ marginRight: 8 }} />}
-      </Dropdown>
+             menu={{items}} 
+             trigger={['click']}>
+             {record.action === 'MoreOutlined' && <MoreOutlined style={{ marginRight: 8 }} />}
+            </Dropdown>
           </>
         ),
         
@@ -92,17 +105,11 @@ function AlertsManagement (){
          <div className="main-div">
           <div>
           <Breadcrumb className="monitoralert-breadcrumb">
-    <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
-    {/* <Breadcrumb.Item>
-      <a href="">Issue Tracker</a>
-    </Breadcrumb.Item> */}
-    
-    <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Overview</Breadcrumb.Item>
-  </Breadcrumb>
+             <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
+             <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Alert Rules</Breadcrumb.Item>
+          </Breadcrumb>
             <h4 className="alert-title">MONITOR | ALERTS</h4>
-     
-            {/* <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Overview</label> */}
-            <div >
+              <div >
               <div className="resource-div">
                 {/* <label className="resource-label">Resource Group <InfoCircleOutlined /></label> */}
                 <label>Resource <InfoCircleOutlined /></label><br/>
@@ -143,11 +150,7 @@ function AlertsManagement (){
             <Search className="tabel-search"
               placeholder="search"
               onChange={(e)=> setSearchvalue(e.target.value)}
-              // onSearch={onSearch}
-              // style={{
-              //   width: 200,
-              // }}
-    />
+              />
             
           </div>
             <Table

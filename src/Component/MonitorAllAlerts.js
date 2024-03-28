@@ -1,13 +1,12 @@
 import react, {useState} from "react";
-import { Table, Tag, Checkbox, Input, Button, Dropdown,Badge, Space, Select, Modal, DatePicker, Menu, Breadcrumb } from 'antd';
-import{ InfoCircleOutlined, UnorderedListOutlined, MoreOutlined, DownOutlined, DownCircleFilled, DeleteOutlined } from "@ant-design/icons"
+import { Table, Tag, Checkbox, Input, Button, Dropdown,Badge, Select, Modal, DatePicker, Menu, Breadcrumb } from 'antd';
+import{ CodepenCircleOutlined, MoreOutlined,DeleteOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom";
 import Monitorallalertdata from "./Data/Monitorallalertdata.json";
 import "./Style/AlertsManagement.css";
 import FilterComponent from "./FiltersComponent";
 function MonitorAllAlerts (){
-  // const [showFilterPopup, setShowFilterPopup] = useState(false);
-  const [selectedTimeframe, setSelectedTimeframe] = useState(null);
+   const [selectedTimeframe, setSelectedTimeframe] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedValues1, setSelectedValues1] = useState([]);
   const [selectProductValue, setSelectProductValue] =useState([]);
@@ -22,6 +21,30 @@ function MonitorAllAlerts (){
   const [selectAlertType, setSelectAlertType] = useState([]);
   const [searchvalue, setSearchvalue] = useState("");
   console.log(searchvalue);
+
+  const items =
+  [
+    {
+      label:"Execute Workflow",
+      key:"11",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Ignore",
+      key:"12",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Manually Close",
+      key:"13",
+      icon:<CodepenCircleOutlined/>
+    },
+    {
+      label:"Create Ticket",
+      key:"14",
+      icon:<CodepenCircleOutlined/>
+    }
+  ]
 
   const handleSubmit = (values1, values2, values3, value4, value5, value6, value7, value8, value9, value10, value11) => {
     
@@ -147,16 +170,6 @@ function MonitorAllAlerts (){
     }
   };
   
-
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
-
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  // };
-
-
   const handleChange = (value) => {
     console.log(`selected ${value}`);
     setSelectedTimeframe(value);
@@ -170,11 +183,7 @@ function MonitorAllAlerts (){
   };
 
   const {Search} = Input;
-  // const handleLinkClick = (e, address) => {
-  //   e.preventDefault();
-  //   window.location.href = address;
-  // }
-
+  
   const columns = [
     {
       title: 'Name',
@@ -192,9 +201,7 @@ function MonitorAllAlerts (){
       
         
       ),
-      // render: (text, record) => <Link to={record.address}>{text}</Link>,
-
-      filteredValue: [searchvalue],
+          filteredValue: [searchvalue],
         onFilter: (value, Monitorallalertdata) =>{
           return(
             String(Monitorallalertdata.name)
@@ -219,7 +226,7 @@ function MonitorAllAlerts (){
     {
       title: 'Severity',
       dataIndex: 'severity',
-      kay:"severity",
+      key:"severity",
       render: (severity) => (
         <>
           {Array.isArray(severity) ? (
@@ -237,9 +244,6 @@ function MonitorAllAlerts (){
       title: 'Alert State',
       dataIndex: 'alertstate',
       key: 'alertstate',
-    //   render: (text) => (
-    //     <span style={{color:"green"}}>{text}</span>
-    //   ),
     },
     {
         title: 'Affected Resource',
@@ -265,16 +269,8 @@ function MonitorAllAlerts (){
         render: (_, record) => (
           <>
              <Dropdown
-        overlay={
-          <Menu className="action-dropdown">
-            <Menu.Item key="11" icon={<DownCircleFilled/>}>Execute Workflow</Menu.Item>
-            <Menu.Item key="12" icon={<DownCircleFilled/>}>Ignore </Menu.Item>
-            <Menu.Item key="13" icon={<DownCircleFilled/>}>Manually Close</Menu.Item>
-            <Menu.Item key="14" icon={<DownCircleFilled/>}>Create Ticket</Menu.Item>
-          </Menu>
-        }
-      >
-      
+             menu={{items}}
+             trigger={['click']}>              
          {record.action === 'MoreOutlined' && <MoreOutlined style={{ marginRight: 8 }} />}
       </Dropdown>
             {/* {record.action === 'MoreOutlined' && <MoreOutlined style={{ marginRight: 8 }} />} */}
@@ -289,36 +285,36 @@ function MonitorAllAlerts (){
     {
       label:"Today",
       value:"today",
-      icon: <DownCircleFilled />,
+      icon: <CodepenCircleOutlined/>,
 
     },
     {
       label:"Last Week",
       value:"lastweek",
-      icon: <DownCircleFilled />,
+      icon: <CodepenCircleOutlined/>,
 
     },
     {
       label:"Last Month",
       value:"lastmonth",
-      icon: <DownCircleFilled />,
+      icon: <CodepenCircleOutlined/>,
 
     },
     {
       label:"Custom",
       value:"custom",
-      icon: <DownCircleFilled />,
+      icon: <CodepenCircleOutlined/>,
       
     },
   ]
   
   const Bulkactiondata = (
     <Menu>
-      <Menu.Item key="1" icon={<DownCircleFilled />}>Delete</Menu.Item>
-      <Menu.Item key="2" icon={<DownCircleFilled />}>Archive</Menu.Item>
-      <Menu.Item key="3" icon={<DownCircleFilled />}>Processed</Menu.Item>
-      <Menu.Item key="4" icon={<DownCircleFilled />}>Create Ticket</Menu.Item>
-      <Menu.Item key="5" icon={<DownCircleFilled />}>Execute Workflow</Menu.Item>
+      <Menu.Item key="1" icon={<CodepenCircleOutlined />}>Delete</Menu.Item>
+      <Menu.Item key="2" icon={<CodepenCircleOutlined />}>Archive</Menu.Item>
+      <Menu.Item key="3" icon={<CodepenCircleOutlined />}>Processed</Menu.Item>
+      <Menu.Item key="4" icon={<CodepenCircleOutlined />}>Create Ticket</Menu.Item>
+      <Menu.Item key="5" icon={<CodepenCircleOutlined />}>Execute Workflow</Menu.Item>
     </Menu>
   );
 
@@ -327,25 +323,15 @@ function MonitorAllAlerts (){
         
           <div>
           <Breadcrumb className="monitoralert-breadcrumb">
-    <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
-    {/* <Breadcrumb.Item>
-      <a href="">Issue Tracker</a>
-    </Breadcrumb.Item> */}
-    
-    <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Alerts</Breadcrumb.Item>
-  </Breadcrumb>
+             <Breadcrumb.Item >{<Link to="/" style={{color:" #383874"}}> Home </Link>} </Breadcrumb.Item>
+             <Breadcrumb.Item style={{color: "#384CFF"}}>Monitor | Alerts</Breadcrumb.Item>
+          </Breadcrumb>
             <h4 className="alert-title">MONITOR | ALL ALERTS</h4>
-            {/* <label style={{float:"right", marginTop:"-44px", marginRight:"25px"}}>Home > Monitor | Alerts</label> */}
             <div >
               <div className="resource-div">
-                {/* <Popover
-                 visible= {showFilterPopup}
-                content={<FilterComponent/>}
-                
-                > */}
                 <Button className="monitor-data-filter"  onClick={showModal}>Filter</Button>
                 <Button icon={<DeleteOutlined />} className="monitor-data-filter" disabled >Clear Filter</Button>
-            {/* <div >     */}
+          
               <div style={{ marginTop: '20px' }} className="monitor-allalt-filter-data">
         <div className="monitor-allalt-filter-data">
           {/* Infra: */}
@@ -472,12 +458,7 @@ function MonitorAllAlerts (){
                 onCloseAlertType={handleAlertTypeTagCloseForm}
                  />
             </Modal>
-                {/* </Popover> */}
-                {/* {showFilterPopup && <FilterComponent onClose={toggleFilterPopup} />} */}
-                {/* <Button icon={<DeleteOutlined />} className="monitor-data-filter" disabled >Clear Filter</Button> */}
-                {/* <Button>Resource <InfoCircleOutlined /></Button> */}
-                
-                  </div>
+               </div>
               <div 
               className="timeframe-dropdown">
               <Select style={{width:"150px"}} 
@@ -485,22 +466,7 @@ function MonitorAllAlerts (){
               options = {lastweekdata} 
               onChange={handleChange} />
               {renderDatePicker()}
-               
-                
-                 
-                 
-                 {/* <DownOutlined />  */}
-            
-             {/* </Select> */}
-             {/* <Dropdown menu={lastweekdata}>
-      <Button>
-        <Space>
-          Button
-          <DownOutlined />
-        </Space>
-      </Button>
-    </Dropdown> */}
-             
+                          
               </div>
             </div>
           </div>
@@ -515,14 +481,8 @@ function MonitorAllAlerts (){
            
             <Search className="tabel-search"
               placeholder="search"
-              onChange={(e)=> setSearchvalue(e.target.value)}
-              // onSearch={onSearch}
-              // style={{
-              //   width: 200,
-              // }}
-    />
-            
-          </div>
+              onChange={(e)=> setSearchvalue(e.target.value)}/>
+             </div>
             <Table
             dataSource={Monitorallalertdata}
             columns={columns}

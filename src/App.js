@@ -9,12 +9,15 @@ import Summary from './Component/Pages/Summary';
 import History from './Component/Pages/History';
 import Diagnostics from './Component/Pages/Diagnostics';
 import { Route, Routes } from 'react-router-dom';
+import Tickets from './Component/Tickets';
+
 function App() {
   return (
     <div className='App'>
       <header >
         {/* <AlertManagementDashboard/> */}
-        
+        {/* <Tickets/> */}
+       
       </header>
       <Routes>
               <Route path='/' element={<AlertManagementDashboard/>}/>

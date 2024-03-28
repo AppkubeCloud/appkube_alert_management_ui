@@ -1,11 +1,8 @@
 import React from "react";
-import {  Button, Layout, Tabs } from 'antd';
-import { Link, Route, Router} from "react-router-dom";
-import Summary from "./Pages/Summary";
-import History from "./Pages/History";
-import Diagnostics from "./Pages/Diagnostics";
+import {  Button, Tabs } from 'antd';
+import { Link} from "react-router-dom";
 import "./Style/PercentageCPUAlert.css"
-import { Content } from "antd/es/layout/layout";
+
 
 function PercentageCPUAlert(){
     return(
@@ -16,20 +13,13 @@ function PercentageCPUAlert(){
                 
                 
             </div>  
-            <Layout> 
-                <Content>  
-        <Tabs defaultActiveKey="1" className="percentage-tab" >
+            <Tabs className="percentage-tab" >
             <Tabs.TabPane  tab={<Link to="/percentagecpualert/summary" style={{color: "#383874"}}>Summary</Link> } key="1" />
-            <Tabs.TabPane tab={<Link to="/percentagecpualert/history"  style={{color: "#383874"}}>History</Link>}key="2" />
-            <Tabs.TabPane tab={<Link to="/percentagecpualert/diagnostics"  style={{color: "#383874"}}>Diagnostics</Link>}key="3" />
+            <Tabs.TabPane  tab={<Link to="/percentagecpualert/history"  style={{color: "#383874"}}>History</Link>} key="2" />
+            <Tabs.TabPane tab={<Link to="/percentagecpualert/diagnostics"  style={{color: "#383874"}}>Diagnostics</Link>} key="3" />
         </Tabs>
-        </Content>  
-        </Layout> 
-       {/* <Summary/>
-       <History/>
-       <Diagnostics/>
-         */}
-        </div>
+       
+    </div>
     );
 
 };

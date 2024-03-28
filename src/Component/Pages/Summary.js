@@ -1,10 +1,7 @@
 import React from "react";
 import {Row, Col, Input, Card, Divider} from "antd";
 import PercentageCPUAlert from "../PercentageCPUAlerts";
-import { Line, Chart } from "@ant-design/charts";
-// import { Chart } from 'bizcharts';
-// import { Chart, LineAdvance } from "@ant-design/charts";
-// import { Chart } from "@ant-design/charts";
+import { Line} from "@ant-design/charts";
 import "../Style/Summary.css";
 import SummartData from "../Data/SummaryUsageData.json";
 
@@ -15,7 +12,6 @@ const config = {
     yField: 'value',
     point: {
       size: 5,
-    //   shape: 'circule',
     },
     label:{
         style:{
@@ -23,19 +19,24 @@ const config = {
         },
     },
     xAxis:{
-        
+       
         label:{
-            autoRotate:false,
+            // autoRotate:false,
+            visible: false
         },
+        
     },
     yAxis:{
-        // min: 0, 
-        // max: 100, 
+        forceNiceScale: false,
+        min: 25, 
+        max: 100, 
+        tickAmount: 7,
         // nice: true,
         label:{
-            formatter: (v)=>{
-                return `${v} units`;
-            },
+            formatter: (v)=> v.toFixed(0) + '%',
+                // return `${v} units`;
+
+            
         },
     },
     slider:{
@@ -79,7 +80,7 @@ function Summary(){
                 <p>A standard line chart provides a clea way to compare trends over time</p>
                 </label>  
                 <Line  data={SummartData} {...config}>
-      {/* <LineAdvance shape="smooth" /> */}
+     
     </Line>
                 </Card>
             </div>
@@ -89,11 +90,9 @@ function Summary(){
                 <Row style={{paddingTop:"20px"}} >
             <Col span={8} order={1} >
                 <label>Affected Resources: Prod_DB_SYN14</label>
-                {/* <Input value="High" name="" variant="borderless" className="input-border"readOnly={true}/> */}
             </Col>
             <Col order={2}  >
                 <label>Percentage CPU Used: 82.00%</label>
-                {/* <Input value="High" name="" variant="borderless" className="input-border"readOnly={true}/> */}
             </Col>
             </Row>
             <Row style={{paddingTop:"20px"}} >
@@ -142,42 +141,35 @@ function Summary(){
             <Col span={7} order={3}  >
                 <label className="alert-details">Description</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>CPU alert greater than 80.0%</p>
-                {/* <p style={{marginTop:"-10px"}}>Threshold:0.2%</p> */}
-            </Col>
+             </Col>
             <Col span={5} order={4}  >
                 <label className="alert-details">Target Resource Type</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>microsoft.computer/virtualmatchin</p>
-                {/* <p style={{marginTop:"-10px"}}>Metric value (when alert fired) : 0.62%</p> */}
             </Col>
             </Row>
             <Row  >
             <Col span={4} order={1} >
                 <label className="alert-details">Monitor Service</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>Platform</p>
-                {/* <p style={{marginTop:"-10px"}}>microsoft.resourceType</p> */}
             </Col>
             <Col span={8} order={2}  >
                 <label className="alert-details">Single Type</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>Metric</p>
-                {/* <p style={{marginTop:"-10px"}}>Microsoft.Computer/virtualmachines</p> */}
             </Col>
             <Col span={7} order={3}  >
                 <label className="alert-details">Alert ID</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>9e8b7d58-1d16-b882-e22ae68ef7a2</p>
-                {/* <p style={{marginTop:"-10px"}}>Threshold:0.2%</p> */}
             </Col>
             <Col span={5} order={4}  >
                 <label className="alert-details">Alert Rule</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>CPU Alert</p>
-                {/* <p style={{marginTop:"-10px"}}>Metric value (when alert fired) : 0.62%</p> */}
             </Col>
             </Row>
             <Row  >
             <Col span={4} order={1} >
                 <label className="alert-details">Suppression Status</label>
                 <p className="alert-details-p" style={{marginTop:"2px"}}>None</p>
-                {/* <p style={{marginTop:"-10px"}}>microsoft.resourceType</p> */}
-            </Col>
+             </Col>
             </Row>
 
                  </Card>
