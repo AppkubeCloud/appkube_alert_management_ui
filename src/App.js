@@ -27,6 +27,7 @@ function App() {
               <Route  path="/percentagecpualert/summary"  element={<Summary />}  ></Route>
               <Route path="/percentagecpualert/history" element={<History/>}></Route>
               <Route path="/percentagecpualert/diagnostics" element={<Diagnostics/>}></Route>
+              <Route path="/monitorallalerts/tickets" element={<Tickets/>}/>
               
             </Routes>
     </div>

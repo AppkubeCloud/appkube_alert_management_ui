@@ -313,7 +313,7 @@ function MonitorAllAlerts (){
       <Menu.Item key="1" icon={<CodepenCircleOutlined />}>Delete</Menu.Item>
       <Menu.Item key="2" icon={<CodepenCircleOutlined />}>Archive</Menu.Item>
       <Menu.Item key="3" icon={<CodepenCircleOutlined />}>Processed</Menu.Item>
-      <Menu.Item key="4" icon={<CodepenCircleOutlined />}>Create Ticket</Menu.Item>
+      <Menu.Item key="4" icon={<CodepenCircleOutlined />}><Link to="/monitorallalerts/tickets">Create Ticket</Link></Menu.Item>
       <Menu.Item key="5" icon={<CodepenCircleOutlined />}>Execute Workflow</Menu.Item>
     </Menu>
   );

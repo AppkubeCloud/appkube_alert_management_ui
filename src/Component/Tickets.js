@@ -98,6 +98,7 @@ function Tickets (){
       title: 'Severity',
       dataIndex: 'severity',
       key:"severity",
+      width:"8.2%",
       render: (severity) => (
         <>
           {Array.isArray(severity) ? (
@@ -127,11 +128,13 @@ function Tickets (){
         title: 'Created',
         dataIndex: 'created',
         key: 'created',
+        width:"9%",
     },
       {
         title: 'Updated',
         dataIndex: 'updated',
         key: 'updated',
+        width:"9%",
         
       },
       {
