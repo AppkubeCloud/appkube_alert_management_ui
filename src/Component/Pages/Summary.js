@@ -1,50 +1,51 @@
 import React from "react";
 import {Row, Col, Input, Card, Divider} from "antd";
 import PercentageCPUAlert from "../PercentageCPUAlerts";
-import { Line} from "@ant-design/charts";
+// import { Line} from "@ant-design/charts";
 import "../Style/Summary.css";
 import SummartData from "../Data/SummaryUsageData.json";
+import { LineChart, Line, XAxis,  YAxis,Tooltip, CartesianGrid } from 'recharts';
 
-const config = {
-    SummartData,
-    height: 250,
-    xField: 'Month',
-    yField: 'value',
-    point: {
-      size: 5,
-    },
-    label:{
-        style:{
-            fill:"#aaa",
-        },
-    },
-    xAxis:{
+// const config = {
+//     SummartData,
+//     height: 250,
+//     xField: 'Month',
+//     yField: 'value',
+    // point: {
+    //   size: 5,
+    // },
+    // label:{
+    //     style:{
+    //         fill:"#aaa",
+    //     },
+    // },
+    // xAxis:{
        
-        label:{
-            // autoRotate:false,
-            visible: false
-        },
+    //     label:{
+    //         // autoRotate:false,
+    //         visible: false
+    //     },
         
-    },
-    yAxis:{
-        forceNiceScale: false,
-        min: 25, 
-        max: 100, 
-        tickAmount: 7,
-        // nice: true,
-        label:{
-            formatter: (v)=> v.toFixed(0) + '%',
-                // return `${v} units`;
+    // },
+    // yAxis:{
+    //     forceNiceScale: false,
+    //     min: 25, 
+    //     max: 100, 
+    //     tickAmount: 7,
+    //     // nice: true,
+    //     label:{
+    //         formatter:(v)=>v.toFixed(0)+'%',
+    //             // return `${v} units`;
 
             
-        },
-    },
-    slider:{
-        start: 25,
-        end:100,
-    }
+    //     },
+    // },
+    // slider:{
+    //     start: 25,
+    //     end:100,
+    // }
 
-   };
+//    };
 
 function Summary(){
     return(
@@ -79,9 +80,15 @@ function Summary(){
                     Usage
                 <p>A standard line chart provides a clea way to compare trends over time</p>
                 </label>  
-                <Line  data={SummartData} {...config}>
-     
-    </Line>
+                    <LineChart width={1150} height={250} data={SummartData} 
+                        margin={{ top: 25, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid horizontal={false} />
+                        <XAxis dataKey="Month"  tickLine ={false} padding = {{left: 45, right: 15}}/>
+                        <YAxis  dataKey="value"  axisLine={false} tickLine ={false}/>
+                        <Tooltip  cursor={false}/>
+                        <Line type="monotone" dataKey="value" stroke="#8676FF" />
+                    </LineChart>
+    
                 </Card>
             </div>
             <div className="alert-card-div"> 

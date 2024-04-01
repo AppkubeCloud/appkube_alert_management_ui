@@ -1,6 +1,9 @@
 import { Button, Row, Col, Card } from "antd";
 import { Link } from "react-router-dom";
-import {UnorderedListOutlined, EllipsisOutlined, CaretUpOutlined, AlertOutlined} from "@ant-design/icons"
+import {UnorderedListOutlined, EllipsisOutlined, CaretUpOutlined, AlertOutlined} from "@ant-design/icons";
+import { LineChart, Line, XAxis,  YAxis,Tooltip, CartesianGrid } from 'recharts';
+import WaitTimeAlertData from "./Data/WaitTimeAlertData.json";
+import AlertVolumeTrendsData from "./Data/AlertVolumeTrendsData1.json";
 import React from "react";
 import "./Style/Dashboard.css";
 
@@ -62,8 +65,15 @@ function AlertManagementDashboard(){
                             <label className="dash-avr-tm-lbl">
                                 Average wait time alert 
                                 <p>A standard line chart provides a clear way to compare trends over time.</p>
-                                                              
-                            </label>
+                                 </label>
+                                 <LineChart width={450} height={220} data={WaitTimeAlertData} 
+                                    margin={{ top: 25, right: 30, bottom: 5, left: -38}}>
+                                    <CartesianGrid horizontal={false}  strokeDasharray="1"/>
+                                    <XAxis dataKey="Month"  tickLine ={false} padding = {{left: 10, right: 10}} fontSize="10" color="#7E7E8F"/>
+                                    <YAxis  dataKey="value"  axisLine={false} tickLine ={false} fontSize="10" color="#7E7E8F"/>
+                                    <Tooltip  cursor={false}/>
+                                    <Line type="monotone" dataKey="value" stroke="#8676FF"  />
+                                </LineChart>     
                     </Card>
                 </Col>
                 <Col span={9}>
@@ -75,6 +85,15 @@ function AlertManagementDashboard(){
                             Alert Volume Trends 
                                <p>A standard line chart provides a clear way to compare trends over time.</p>
                             </label>
+                            <LineChart width={450} height={220} data={AlertVolumeTrendsData} 
+                                margin={{ top: 25, right: 30, bottom: 5, left: -38}}>
+                                <CartesianGrid horizontal={false}  strokeDasharray="1"/>
+                                <XAxis dataKey="Month"  tickLine ={false} padding = {{left: 10, right: 10}} fontSize="10" color="#7E7E8F"/>
+                                <YAxis  dataKey="value"  axisLine={false} tickLine ={false} fontSize="10" color="#7E7E8F"/>
+                                <Tooltip  cursor={false}/>
+                                <Line type="monotone" dataKey="value" stroke="#8676FF"  />
+                                <Line type="monotoneX" dataKey="data" stroke="#A145FF"/>
+                            </LineChart>
                     </Card>
                 </Col>
                 <Col span={5}>
