@@ -4,7 +4,7 @@ import {UnorderedListOutlined, EllipsisOutlined, CaretUpOutlined, AlertOutlined}
 import { LineChart, Line, XAxis,  YAxis,Tooltip, CartesianGrid } from 'recharts';
 import WaitTimeAlertData from "./Data/WaitTimeAlertData.json";
 import AlertVolumeTrendsData from "./Data/AlertVolumeTrendsData1.json";
-import React from "react";
+import AlertVolumeTrendsData2 from "./Data/AlertVolumeTrendsData2.json";
 import "./Style/Dashboard.css";
 
 function AlertManagementDashboard(){
@@ -25,14 +25,14 @@ function AlertManagementDashboard(){
                             <AlertOutlined  />
                             <label className="card-label">
                                 All Alerts <br/>
-                                43,833 <CaretUpOutlined style={{color: "#00B929"}} />
-                                10%
+                                43,833 <CaretUpOutlined style={{color: "#00B929", width: "12px"}} />
+                                <label style={{fontSize:"12px", color: "#00B929"}}>10%</label>
                             </label>
                     </Card>
                     </Link>}
                 </Col>
                 <Col span={4}>
-                {<Link to="alertsmanagement" relative="path">
+                {<Link to="/alertsmanagement" relative="path">
                 <Card  className="dashboard-alert-card"
                         bordered={false}
                         >
@@ -156,7 +156,41 @@ function AlertManagementDashboard(){
                             <label className="dash-team">
                                Top Alerts Today
                             </label>
-                    </Card>
+                            <Row className="team-crd">
+                                <Col className="alt-col" span={11}>CPU Utilization</Col>
+                                <Col className="alt-col" style={{ opacity:"0.6"}}>3:24</Col>
+                                <Col ><Button className="alt-btn" style={{borderColor:"red"}}>High</Button></Col>
+                            </Row>
+                            <Row className="team-crd-lbl">
+                                <Col className="alt-col" span={11}>AWS S3</Col>
+                                <Col className="alt-col" style={{opacity:"0.6"}}>3:11</Col>
+                                <Col ><Button className="alt-btn" style={{borderColor:"orange"}}>Medium</Button></Col>
+                            </Row>
+                            <Row className="team-crd-lbl">
+                                <Col className="alt-col" span={11}>Dard Disk</Col>
+                                <Col className="alt-col" style={{ opacity:"0.6"}}>3:00</Col>
+                                <Col ><Button className="alt-btn" style={{borderColor:"green"}}>Low</Button></Col>
+                            </Row>
+                            <Row className="team-crd-lbl">
+                                <Col className="alt-col" span={10}>Network IN</Col>
+                                <Col className="alt-col" style={{ opacity:"0.6"}}>23:08</Col>
+                                <Col ><Button style={{borderColor:"red"}} className="alt-btn">High</Button></Col>
+                            </Row>
+                            <Row className="team-crd-lbl">
+                                <Col className="alt-col" span={10}>Network Out</Col>
+                                <Col className="alt-col" style={{ opacity:"0.6"}}>21:06</Col>
+                                <Col ><Button className="alt-btn" style={{borderColor:"orange"}}>Medium</Button>
+                                </Col>
+                            </Row>
+                            
+                            <Row className="team-crd-lbl">
+                                <Col className="alt-col" span={10}>VCenter</Col>
+                                <Col className="alt-col" style={{opacity:"0.6"}}>20:03</Col>
+                                <Col >
+                                    <Button className="alt-btn"  style={{borderColor:"green"}}>Low</Button>
+                                </Col>
+                            </Row>
+                        </Card>
                 </Col>
                 <Col span={9}>
                 <Card  className="dash-avr-tm-crd"
@@ -167,6 +201,19 @@ function AlertManagementDashboard(){
                             Alert Volume By Trends
                             <p>A standard line chart provides a clear way to compare trends over time.</p>
                             </label>
+                            <LineChart width={450} height={220} data={AlertVolumeTrendsData2} 
+                                margin={{ top: 25, right: 30, bottom: 5, left: -38}}>
+                                <CartesianGrid horizontal={false}  strokeDasharray="1"/>
+                                <XAxis dataKey="Month"  tickLine ={false} padding = {{left: 10, right: 10}} fontSize="10" color="#7E7E8F"/>
+                                <YAxis  dataKey="value"  axisLine={false} tickLine ={false} fontSize="10" color="#7E7E8F"/>
+                                <Tooltip  cursor={false}/>
+                                <Line type="monotone" dataKey="value" stroke="#A145FF"  />
+                                <Line type="monotoneX" dataKey="data" stroke="#FA6298"/>
+                                <Line type="monotoneX" dataKey="mdata" stroke="#FAA24B"/>
+                                <Line type="monotoneX" dataKey="tdata" stroke="#F9D33D"/>
+                                <Line type="monotoneX" dataKey="vdata" stroke="#88E143"/>
+                                <Line type="monotoneX" dataKey="vtdata" stroke="#53CA43"/>
+                            </LineChart>
                     </Card>
                 </Col>
                 <Col span={9}>
@@ -178,6 +225,14 @@ function AlertManagementDashboard(){
                                 Average Response Time Alert
                                 <p>A standard line chart provides a clear way to compare trends over time.</p>
                             </label>
+                            <LineChart width={450} height={220} data={WaitTimeAlertData} 
+                                    margin={{ top: 25, right: 30, bottom: 5, left: -38}}>
+                                    <CartesianGrid horizontal={false}  strokeDasharray="1"/>
+                                    <XAxis dataKey="Month"  tickLine ={false} padding = {{left: 10, right: 10}} fontSize="10" color="#7E7E8F"/>
+                                    <YAxis  dataKey="value"  axisLine={false} tickLine ={false} fontSize="10" color="#7E7E8F"/>
+                                    <Tooltip  cursor={false}/>
+                                    <Line type="monotone" dataKey="value" stroke="#8676FF"  />
+                                </LineChart>    
                     </Card>
                 </Col>
             </Row>

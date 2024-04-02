@@ -81,12 +81,26 @@ font-weight: 700;
     margin-top: 40px;
     color: #383874;
     font-family: Roboto;
-    font-size: 14px;
     font-weight: 500;
+    
+}
+.alt-col{
+    font-size: 12px;
+    font-weight: 500;
+    margin-right: 12px;
+    
 }
 .team-crd-lbl{
     color: #383874;
     font-family: Roboto;
     font-size: 14px;
     font-weight: 500;
+}
+
+.alt-btn{
+    font-size: 7px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    width: 50px;
+    height: 22px;
 }

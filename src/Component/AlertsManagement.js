@@ -136,7 +136,7 @@ function AlertsManagement (){
                   placeholder="Select Resource "/> */}
                   </div>
               <div>
-                <Button className="alert-rule-btn" icon={<PlusOutlined />} disabled>New Alert Rule</Button>
+                <Button className="alert-rule-btn" icon={<PlusOutlined />}>{<Link to="/alertsmanagement/alertrulebuilder">New Alert Rule</Link>}</Button>
               </div>
             </div>
           </div>
