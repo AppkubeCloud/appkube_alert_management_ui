@@ -1,44 +1,80 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Style/AlertRuleBuilder.css";
-import {Radio, Button, Form, Input} from "antd";
+import AlertDetails from "./Pages/AlertDetails";
+import {Button, message, Steps, theme, } from "antd";
+import AlertType from "./AlertType";
 import {Link } from 'react-router-dom';
-
-
+const steps = [
+    {
+      title: 'Alert Details',
+      content: <AlertDetails/>,
+    },
+    {
+      title: 'Alert Type',
+      content: <AlertType/>,
+    },
+    {
+      title: 'Conditions',
+      content: 'Last-content',
+    },
+    {
+      title: 'Alert Handlers',
+      content: 'Last-content',
+    },
+    {
+      title: 'Message',
+      content: 'Last-content',
+    },
+  ];
 function AlertRuleBuilder(){
-    const { TextArea } = Input
+    const { token } = theme.useToken();
+  const [current, setCurrent] = useState(0);
+  const next = () => {
+    setCurrent(current + 1);
+  };
+  const prev = () => {
+    setCurrent(current - 1);
+  };
+  const items = steps.map((item) => ({
+    key: item.title,
+    title: item.title,
+  }));
     return(
        <div> 
             <div className="rule-builder-div">
                 <label className="rule-builder-lbl">Alert rule builder</label>
                 <Button type="primary" className="rule-builder-back-btn"><Link to="/alertsmanagement">Back</Link></Button>
             </div>
-            <div className="radio-btn-div">
-            <Radio.Group >
-                <Radio.Button className="radio-btn" style={{color: "black", borderColor:"black"}}>Alert Details</Radio.Button>
-                <Radio.Button className="radio-btn" style={{color: "black", borderColor:"black"}}>Alert Type</Radio.Button>
-                <Radio.Button className="radio-btn" style={{color: "black", borderColor:"black"}}>Conditions</Radio.Button>
-                <Radio.Button className="radio-btn" style={{color: "black", borderColor:"black"}}>Alert Handlers</Radio.Button>
-                <Radio.Button className="radio-btn" style={{color: "black", borderColor:"black"}}>Message</Radio.Button>
-            </Radio.Group>
-           </div>
-            <div className="rule-builder-form">
-            <Button disabled className="frm-rule-btn">Save Rule</Button>
-            <Form layout="vertical" className="rule-form">
-                <Form.Item >
-                    
-                 <label className="rule-frm-lbl"> NAME THIS ALERT RULE </label>
-                <Input placeholder="Placeholder" />
-                 </Form.Item>
-                <Form.Item>
-                 <label  className="rule-frm-lbl">DISCRIPTION</label>
-                <TextArea rows={5} placeholder="Placeholder"/>
-                 </Form.Item>
-                  
-            </Form>
-            <Form.Item style={{textAlign:"center"}}> 
-                    <Button type="primary" className="frm-nxt-btn">Next</Button>
-                </Form.Item>
-            </div>
+            <div >
+            <Steps size="small" current={current} items={items} className="rule-builder-steps" />
+      <div >{steps[current].content}</div>
+      <div className="radio-btn-div"
+        // style={{
+        //   marginTop: 15,
+        // }}
+      >
+        {current > 0 && (
+          <Button
+            style={{
+              margin: '0 8px',
+            }}
+            onClick={() => prev()}
+          >
+            Previous
+          </Button>
+        )}
+        {current < steps.length - 1 && (
+          <Button  className="frm-nxt-btn" onClick={() => next()}>
+            Next
+          </Button>
+        )}
+        {current === steps.length - 1 && (
+          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+            Done
+          </Button>
+        )}
+      </div>
+       </div>
         </div>
     )
 };

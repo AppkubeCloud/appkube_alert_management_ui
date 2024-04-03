@@ -10,8 +10,6 @@ function PercentageCPUAlert(){
             <div className="percentage-div">
                 <label className="percentage-tittle">Alert : Percentage CPU</label>
                 <Button className="percentage-btn">{<Link to="/monitorallalerts"> Back </Link>}</Button>
-                
-                
             </div>  
             <Tabs className="percentage-tab" >
             <Tabs.TabPane  tab={<Link to="/percentagecpualert/summary" style={{color: "#383874"}}>Summary</Link> } key="1" />
