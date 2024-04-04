@@ -33,21 +33,39 @@
 .dashboard-alert-card{
     margin-left: 30px;
     margin-bottom: 15px;
+    height: 76px;
     /* width: 290px;
     height: 96px; */
     /* height: 60px; */
     
 }
+.crn-div{
+    width: 40px;
+    height: 40px;
+    background-color: #66C8FF;
+    border-radius: 10px;
+    text-align:center;
+    margin-top: -7px;   
+}
+.crn-icon{
+    color: white;
+    margin-top: 9px;
+}
+.rise-icon{
+    width: 40px;
+    height: 40px;
+    background-color: #8676FF;
+    border-radius: 10px;
+    text-align:center;
+    margin-top: -7px; 
+}
 .card-label{
     float: right;
-    margin-top: -10px;
-    color: var(--Night-Blue, #383874);
-/* Body / Title */
-font-family: Roboto;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-
+    margin-top: -50px;
+    color: #383874;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .dash-avr-tm-crd{
@@ -75,6 +93,8 @@ font-weight: 700;
 .dash-team{
    padding-left:32px;
     color: #383874;
+    font-family: Roboto;
+    font-size: 17px;
 }
 
 .team-crd{
@@ -101,6 +121,7 @@ font-weight: 700;
     font-size: 7px;
     border-radius: 8px;
     margin-bottom: 8px;
-    width: 50px;
-    height: 22px;
+    width: 40px;
+    height: 20px;
+    padding-left: 9px;
 }

@@ -20,6 +20,7 @@ function MonitorAllAlerts (){
   const [selectAlertState, setSelectAlertState] = useState([]);
   const [selectAlertType, setSelectAlertType] = useState([]);
   const [searchvalue, setSearchvalue] = useState("");
+  
   console.log(searchvalue);
 
   const items =

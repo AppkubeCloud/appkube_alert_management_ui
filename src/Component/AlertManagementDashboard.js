@@ -1,12 +1,17 @@
-import { Button, Row, Col, Card } from "antd";
+import { Button, Row, Col, Card, Flex, Progress } from "antd";
 import { Link } from "react-router-dom";
-import {UnorderedListOutlined, EllipsisOutlined, CaretUpOutlined, AlertOutlined} from "@ant-design/icons";
+import {UnorderedListOutlined, EllipsisOutlined, CaretUpOutlined, RiseOutlined, CrownOutlined} from "@ant-design/icons";
 import { LineChart, Line, XAxis,  YAxis,Tooltip, CartesianGrid } from 'recharts';
 import WaitTimeAlertData from "./Data/WaitTimeAlertData.json";
 import AlertVolumeTrendsData from "./Data/AlertVolumeTrendsData1.json";
 import AlertVolumeTrendsData2 from "./Data/AlertVolumeTrendsData2.json";
 import "./Style/Dashboard.css";
 
+const twoColors = {
+  '0%': '#8676FF',
+  "50%": "#FFBA69",
+  '100%': '#FF708B',
+};
 function AlertManagementDashboard(){
     return(
         <div className="dashboard-div">
@@ -22,7 +27,10 @@ function AlertManagementDashboard(){
                     <Card  className="dashboard-alert-card"
                         bordered={false}
                         >
-                            <AlertOutlined  />
+                            <Flex wrap="wrap" gap="small" style={{marginTop:"-7px"}}>
+                                 <Progress size={40} type="circle" percent="32" strokeColor={twoColors} />
+                            </Flex>
+                            {/* <AlertOutlined  /> */}
                             <label className="card-label">
                                 All Alerts <br/>
                                 43,833 <CaretUpOutlined style={{color: "#00B929", width: "12px"}} />
@@ -36,7 +44,8 @@ function AlertManagementDashboard(){
                 <Card  className="dashboard-alert-card"
                         bordered={false}
                         >
-                            <AlertOutlined  />
+                            <div className="crn-div"><CrownOutlined style={{fontSize: "150%"}} className="crn-icon"/></div>
+                            {/* <AlertOutlined  /> */}
                             <label className="card-label">
                             All Alert Rules <br/>
                                 24 
@@ -48,7 +57,8 @@ function AlertManagementDashboard(){
                 <Card  className="dashboard-alert-card"
                         bordered={false}
                         >
-                            <AlertOutlined  />
+                            {/* <AlertOutlined  /> */}
+                            <div className="rise-icon"><RiseOutlined style={{fontSize: "150%"}} className="crn-icon"/></div>
                             <label className="card-label">
                                 Workflows <br/>
                                 64 
@@ -105,44 +115,44 @@ function AlertManagementDashboard(){
                                Team Matrics
                             </label>
                             <Row className="team-crd">
-                                <Col >John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9} >John</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>650</Col>
+                                <Col >15 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>Bill</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>612</Col>
+                                <Col>17 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>Lyna</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>598</Col>
+                                <Col>17 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>Steyn</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>513</Col>
+                                <Col>15 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>Bob</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>498</Col>
+                                <Col>17 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>Bill</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>321</Col>
+                                <Col>15 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col span={9}>John</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>650</Col>
+                                <Col>15 min</Col>
                             </Row>
                             <Row className="team-crd-lbl">
-                                <Col>John</Col>
-                                <Col style={{marginLeft:"50px", opacity:"0.6"}}>650</Col>
-                                <Col style={{marginLeft:"40px"}}>15 min</Col>
+                                <Col  span={9}>John</Col>
+                                <Col span={9} style={{opacity:"0.6"}}>650</Col>
+                                <Col  >15 min</Col>
                             </Row>
                     </Card>
                 </Col>

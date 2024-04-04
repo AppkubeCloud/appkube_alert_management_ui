@@ -19,6 +19,20 @@ const {TreeNode} = TreeSelect;
   const [selectedValues3, setSelectedValues3] = useState([]);
   const [selectAlertType, setSelectAlertType] = useState([]);
 
+  const handleClearButtonClick = () => {
+    setSelectedValues1([]);
+    setSelectProductValue([]);
+    setSelectElementValue([]);
+    setSelectedValues2([]);
+    setSelectBusinessProduct([]);
+    setSelectEnvironment([]);
+    setSelectModuleValue([]);
+    setSelectServices([]);
+    setSelectAlertState([]);
+    setSelectedValues3([]);
+    setSelectAlertType([]);
+  };
+
   const handleSubmit = () => {
     onSubmit(selectedValues1,  selectedValues2, selectedValues3, selectElementValue, selectProductValue, selectBusinessProduct, selectEnvironment, selectModuleValue, selectServices, selectAlertState, selectAlertType);
   };
@@ -271,6 +285,7 @@ const {TreeNode} = TreeSelect;
           className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectedValues1}
             // dropdownStyle={{ maxWidth: 400, overflow: 'auto' }}
             placeholder="Landing Zone"
             onChange={value => setSelectedValues1(value)}
@@ -280,6 +295,7 @@ const {TreeNode} = TreeSelect;
           className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectProductValue}
             // dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Product Enclave"
             // onChange={value => setSelectedValues1(value)}
@@ -290,6 +306,7 @@ const {TreeNode} = TreeSelect;
           <TreeSelect style={{width:"200px"}}
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectElementValue}
             // dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Elements"
             // onChange={value => setSelectedValues1(value)}
@@ -305,6 +322,7 @@ const {TreeNode} = TreeSelect;
         <div className="filter-div">
           <TreeSelect style={{width:"200px"}}
            className="infra-dropdown"
+           value={selectedValues2}
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
@@ -316,6 +334,7 @@ const {TreeNode} = TreeSelect;
            className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectBusinessProduct}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Product"
             onChange={value => setSelectBusinessProduct(value)}
@@ -325,6 +344,7 @@ const {TreeNode} = TreeSelect;
            className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectEnvironment}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Environment"
             onChange={value => setSelectEnvironment(value)}
@@ -334,6 +354,7 @@ const {TreeNode} = TreeSelect;
            className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectModuleValue}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Module"
             onChange={value => setSelectModuleValue(value)}
@@ -342,6 +363,7 @@ const {TreeNode} = TreeSelect;
           <TreeSelect style={{width:"200px"}}
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectServices}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Services"
             onChange={value => setSelectServices(value)}
@@ -356,6 +378,7 @@ const {TreeNode} = TreeSelect;
            className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectedValues3}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Severity"
             onChange={value => setSelectedValues3(value)}
@@ -365,6 +388,7 @@ const {TreeNode} = TreeSelect;
            className="infra-dropdown"
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectAlertState}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Alert State"
             onChange={value => setSelectAlertState(value)}
@@ -373,6 +397,7 @@ const {TreeNode} = TreeSelect;
           <TreeSelect style={{width:"200px"}}
             showCheckedStrategy={TreeSelect.SHOW_ALL}
             treeCheckable={true}
+            value={selectAlertType}
             dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
             placeholder="Alert Type"
             onChange={value => setSelectAlertType(value)}
@@ -385,7 +410,7 @@ const {TreeNode} = TreeSelect;
           <Button type="primary" onClick={handleSubmit} style={{marginRight:"40px"}} >
             Submit
           </Button>
-          <Button type="primary" >
+          <Button type="primary" onClick={handleClearButtonClick}>
             Clear
           </Button>
         </Form.Item>
