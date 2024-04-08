@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import "./Style/AlertRuleBuilder.css";
-import AlertDetails from "./Pages/AlertDetails";
 import {Button, message, Steps, theme, } from "antd";
+import AlertDetails from "./Pages/AlertDetails";
+import Condition from "./Condition";
 import AlertType from "./AlertType";
+import AlertHandlers from "./AlertHandlers";
 import {Link } from 'react-router-dom';
 const steps = [
     {
@@ -15,11 +17,11 @@ const steps = [
     },
     {
       title: 'Conditions',
-      content: 'Last-content',
+      content: <Condition/>,
     },
     {
       title: 'Alert Handlers',
-      content: 'Last-content',
+      content: <AlertHandlers/>,
     },
     {
       title: 'Message',

@@ -1,4 +1,4 @@
-import react, {useState} from "react";
+import react, {useState, useEffect} from "react";
 import { Table, Tag, Checkbox, Input, Button, Dropdown,Badge, Select, Modal, DatePicker, Menu, Breadcrumb } from 'antd';
 import{ CodepenCircleOutlined, MoreOutlined,DeleteOutlined } from "@ant-design/icons"
 import { Link } from "react-router-dom";
@@ -20,7 +20,35 @@ function MonitorAllAlerts (){
   const [selectAlertState, setSelectAlertState] = useState([]);
   const [selectAlertType, setSelectAlertType] = useState([]);
   const [searchvalue, setSearchvalue] = useState("");
-  
+  const [dataAvailable, setDataAvailable] = useState(false);
+
+  const handleDataAvailability = () => {
+   
+    const isDataAvailable = selectedValues1.length > 0 || selectProductValue.length > 0 
+    || selectElementValue.length > 0 ||  selectedValues2.length > 0 || selectBusinessProduct.length > 0 
+    || selectEnvironment.length > 0 || selectModuleValue.length > 0 || selectServices.length > 0 
+    || selectedValues3.length > 0 || selectAlertState.length > 0 || selectAlertType.length > 0 ;
+    setDataAvailable(isDataAvailable);
+  };
+
+  useEffect(() => {
+    handleDataAvailability();
+  }, [selectedValues1, selectProductValue, selectElementValue, selectedValues2, selectBusinessProduct, selectEnvironment,
+    selectModuleValue, selectServices, selectedValues3, selectAlertState, selectAlertType]);
+ 
+  const handleClearButtonClick = () => {
+    setSelectedValues1([]);
+    setSelectProductValue([]);
+    setSelectElementValue([]);
+    setSelectedValues2([]);
+    setSelectBusinessProduct([]);
+    setSelectEnvironment([]);
+    setSelectModuleValue([]);
+    setSelectServices([]);
+    setSelectedValues3([]);
+    setSelectAlertState([]);
+    setSelectAlertType([]);
+  };
   console.log(searchvalue);
 
   const items =
@@ -331,7 +359,8 @@ function MonitorAllAlerts (){
             <div >
               <div className="resource-div">
                 <Button className="monitor-data-filter"  onClick={showModal}>Filter</Button>
-                <Button icon={<DeleteOutlined />} className="monitor-data-filter" disabled >Clear Filter</Button>
+                <Button icon={<DeleteOutlined />} className="monitor-data-filter" 
+                disabled={!dataAvailable} onClick={handleClearButtonClick}>Clear Filter</Button>
           
               <div style={{ marginTop: '20px' }} className="monitor-allalt-filter-data">
         <div className="monitor-allalt-filter-data">

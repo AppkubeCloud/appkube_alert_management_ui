@@ -1,0 +1,16 @@
+.add-another-handler-dropdown{
+    padding-right: 290px;
+    color:#383874;
+    font-family: "Open Sans";
+    font-size: 14px;
+}
+.add-another-handler-dropdown-menu{
+    /* color: #383874; */
+    font-family: "Open Sans";
+    font-size: 14px;
+}
+.add-another-handler-dropdown-lbl{
+    border-radius: 6px;
+    background: #DDE1F8;
+    padding: 5px;
+}
