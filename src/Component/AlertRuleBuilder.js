@@ -6,6 +6,7 @@ import Condition from "./Condition";
 import AlertType from "./AlertType";
 import AlertHandlers from "./AlertHandlers";
 import {Link } from 'react-router-dom';
+import Message from "./Message";
 const steps = [
     {
       title: 'Alert Details',
@@ -25,7 +26,7 @@ const steps = [
     },
     {
       title: 'Message',
-      content: 'Last-content',
+      content: <Message/>,
     },
   ];
 function AlertRuleBuilder(){
@@ -50,11 +51,7 @@ function AlertRuleBuilder(){
             <div >
             <Steps size="small" current={current} items={items} className="rule-builder-steps" />
       <div >{steps[current].content}</div>
-      <div className="radio-btn-div"
-        // style={{
-        //   marginTop: 15,
-        // }}
-      >
+      <div className="radio-btn-div">
         {current > 0 && (
           <Button
             style={{
@@ -70,11 +67,11 @@ function AlertRuleBuilder(){
             Next
           </Button>
         )}
-        {current === steps.length - 1 && (
+        {/* {current === steps.length - 1 && (
           <Button type="primary" onClick={() => message.success('Processing complete!')}>
             Done
           </Button>
-        )}
+        )} */}
       </div>
        </div>
         </div>

@@ -11,14 +11,12 @@ import { Route, Routes } from 'react-router-dom';
 import Tickets from './Component/Tickets';
 import AlertRuleBuilder from './Component/AlertRuleBuilder';
 import Threshold from './Component/Pages/Threshold';
-// import Post from './Component/Pages/Post';
+
 
 function App() {
   return (
     <div className='App'>
-      <header>
-        {/* <Post/> */}
-      </header>
+      <header></header>
       <Routes>
               <Route path='/' element={<AlertManagementDashboard/>}/>
               <Route exact path="/monitorallalerts"  element={<MonitorAllAlerts/>}  ></Route>
