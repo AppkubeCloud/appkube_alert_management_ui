@@ -19,9 +19,22 @@ function MonitorAllAlerts (){
   const [selectedValues3, setSelectedValues3] = useState([]);
   const [selectAlertState, setSelectAlertState] = useState([]);
   const [selectAlertType, setSelectAlertType] = useState([]);
-  const [searchvalue, setSearchvalue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [dataAvailable, setDataAvailable] = useState(false);
+  const [tableData, setTableData] = useState(Monitorallalertdata);
 
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    const newData = Monitorallalertdata.filter((item) =>
+      Object.values(item).some(
+        (val) =>
+          typeof val === "string" && val.toLowerCase().includes(value.toLowerCase())
+      ) ||
+      (Array.isArray(item.severity) && item.severity.some((severity) => severity.toLowerCase().includes(value.toLowerCase())))
+    );
+    setTableData(newData);
+  };
+  
   const handleDataAvailability = () => {
    
     const isDataAvailable = selectedValues1.length > 0 || selectProductValue.length > 0 
@@ -49,7 +62,7 @@ function MonitorAllAlerts (){
     setSelectAlertState([]);
     setSelectAlertType([]);
   };
-  console.log(searchvalue);
+  // console.log(searchvalue);
 
   const items =
   [
@@ -230,26 +243,26 @@ function MonitorAllAlerts (){
       
         
       ),
-          filteredValue: [searchvalue],
-        onFilter: (value, Monitorallalertdata) =>{
-          return(
-            String(Monitorallalertdata.name)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(Monitorallalertdata.severity)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(Monitorallalertdata.alertstate)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(Monitorallalertdata.affectedresource)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(Monitorallalertdata.assignedworkflow)
-              .toLowerCase()
-              .includes(value.toLowerCase())
-          );
-        }
+        //   filteredValue: [searchvalue],
+        // onFilter: (value, Monitorallalertdata) =>{
+        //   return(
+        //     String(Monitorallalertdata.name)
+        //       .toLowerCase()
+        //       .includes(value.toLowerCase()) ||
+        //     String(Monitorallalertdata.severity)
+        //       .toLowerCase()
+        //       .includes(value.toLowerCase()) ||
+        //     String(Monitorallalertdata.alertstate)
+        //       .toLowerCase()
+        //       .includes(value.toLowerCase()) ||
+        //     String(Monitorallalertdata.affectedresource)
+        //       .toLowerCase()
+        //       .includes(value.toLowerCase()) ||
+        //     String(Monitorallalertdata.assignedworkflow)
+        //       .toLowerCase()
+        //       .includes(value.toLowerCase())
+        //   );
+        // }
         
     },
     {
@@ -511,10 +524,10 @@ function MonitorAllAlerts (){
            
             <Search className="tabel-search"
               placeholder="search"
-              onChange={(e)=> setSearchvalue(e.target.value)}/>
+              onChange={(e)=> handleSearch(e.target.value)}/>
              </div>
             <Table
-            dataSource={Monitorallalertdata}
+            dataSource={tableData}
             columns={columns}
             pagination={false}
             // key="name"

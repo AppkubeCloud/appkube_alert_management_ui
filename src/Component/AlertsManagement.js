@@ -6,6 +6,21 @@ import AlertsData from "./Data/AlertsData.json";
 import "./Style/AlertsManagement.css";
 function AlertsManagement (){
   const [searchvalue, setSearchvalue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [tableData, setTableData] = useState(AlertsData);
+
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    const newData = AlertsData.filter((item) =>
+      Object.values(item).some(
+        (val) =>
+          typeof val === "string" && val.toLowerCase().includes(value.toLowerCase())
+      )
+    );
+    setTableData(newData);
+  };
+
+
   const items=[
     {
       label:"Delete",
@@ -39,24 +54,24 @@ function AlertsManagement (){
           {record.name}
         </span>
       ),
-      filteredValue: [searchvalue],
-        onFilter: (value, AlertsData) =>{
-          return(
-            String(AlertsData.name)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(AlertsData.condition)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(AlertsData.status)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(AlertsData.targetresource)
-              .toLowerCase()
-              .includes(value.toLowerCase())
+      // filteredValue: [searchvalue],
+      //   onFilter: (value, AlertsData) =>{
+      //     return(
+      //       String(AlertsData.name)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(AlertsData.condition)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(AlertsData.status)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(AlertsData.targetresource)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase())
            
-          );
-        }
+      //     );
+      //   }
     },
     {
       title: 'Condition',
@@ -149,12 +164,12 @@ function AlertsManagement (){
             </Dropdown>
             <Search className="tabel-search"
               placeholder="search"
-              onChange={(e)=> setSearchvalue(e.target.value)}
+              onChange={(e)=> handleSearch(e.target.value)}
               />
             
           </div>
             <Table
-            dataSource={AlertsData}
+            dataSource={tableData}
             columns={columns}
             pagination={false}
             bordered
