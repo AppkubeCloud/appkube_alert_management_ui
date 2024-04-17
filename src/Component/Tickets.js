@@ -5,9 +5,23 @@ import { Link } from "react-router-dom";
 import TicketData from "../Component/Data/TicketData.json";
 import "./Style/AlertsManagement.css";
 
+
 function Tickets (){
   const [searchvalue, setSearchvalue] = useState("");
+  const [tableData, setTableData] = useState(TicketData);
   console.log(searchvalue);
+
+  const handleSearch = (value)=>{
+    setSearchvalue(value);
+    const newData = TicketData.filter((item)=>
+    Object.values(item).some(
+      (val)=>
+      typeof val === "string" && val.toLowerCase().includes(value.toLowerCase())
+    ) ||
+    (Array.isArray(item.severity) && item.severity.some((severity)=>severity.toLowerCase().includes(value.toLowerCase())))
+    );
+    setTableData(newData);
+  };
 
   const items=[
     {
@@ -54,29 +68,29 @@ function Tickets (){
       dataIndex: 'ticket',
       key:"ticket",
       
-      filteredValue: [searchvalue],
-        onFilter: (value, TicketData) =>{
-          return(
-            String(TicketData.ticket)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(TicketData.severity)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(TicketData.summary)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(TicketData.creator)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(TicketData.category)
-              .toLowerCase()
-              .includes(value.toLowerCase()) ||
-            String(TicketData.site)
-            .toLowerCase()
-            .includes(value.toLowerCase())
-          );
-        }
+      // filteredValue: [searchvalue],
+      //   onFilter: (value, TicketData) =>{
+      //     return(
+      //       String(TicketData.ticket)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(TicketData.severity)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(TicketData.summary)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(TicketData.creator)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(TicketData.category)
+      //         .toLowerCase()
+      //         .includes(value.toLowerCase()) ||
+      //       String(TicketData.site)
+      //       .toLowerCase()
+      //       .includes(value.toLowerCase())
+      //     );
+      //   }
         
     },
     {
@@ -190,12 +204,12 @@ function Tickets (){
                
             <Search className="tabel-search"
               placeholder="search"
-              onChange={(e)=> setSearchvalue(e.target.value)}
+              onChange={(e)=> handleSearch(e.target.value)}
                />
             
           </div>
             <Table
-            dataSource={TicketData}
+            dataSource={tableData}
             columns={columns}
             pagination={false}
             bordered

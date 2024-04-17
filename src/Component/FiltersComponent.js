@@ -6,7 +6,7 @@ import {CloseCircleOutlined} from "@ant-design/icons";
 const {TreeNode} = TreeSelect;
 
  function FilterComponent({ onSubmit, onCloseTag1, onCloseTag2, onCloseTag3, onCloseProductTag1, onCloseElementTag1, onClosleBusinessProduct, onCloseEnvironment,onCloseModuleTag, onCloseServicesTag, onCloseAlertStateTag, onCloseAlertType }){
-    const [selectedValues, setSelectedValues] = useState({});
+    const [selectedValues, setSelectedValues] = useState([]);
     const [selectedValues1, setSelectedValues1] = useState([]);
     const [selectProductValue, setSelectProductValue] =useState([]);
     const [selectElementValue, setSelectElementValue]= useState([]);
